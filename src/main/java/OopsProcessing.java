@@ -7,6 +7,8 @@ public class OopsProcessing extends PApplet {
 
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480 / 5;
+    private static final int SPEED = 1;
+    public static final int POSITION_X = 0;
     List<Shape> balls;
 
     public static void main(String[] args) {
@@ -21,10 +23,10 @@ public class OopsProcessing extends PApplet {
 
     @Override
     public void setup() {
-        Ball ball1 = new Ball(0, HEIGHT, 1);
-        Box box1 = new Box(0, 2 * HEIGHT, 2);
-        Ball ball3 = new Ball(0, 3 * HEIGHT, 3);
-        Ball ball4 = new Ball(0, 4 * HEIGHT, 4);
+        Ball ball1 = new Ball(POSITION_X, HEIGHT, SPEED);
+        Box box1 = new Box(POSITION_X, 2 * HEIGHT, SPEED * 2);
+        Ball ball3 = new Ball(POSITION_X, 3 * HEIGHT, SPEED * 3);
+        Ball ball4 = new Ball(POSITION_X, 4 * HEIGHT, SPEED * 4);
         balls = Arrays.asList(ball1, box1, ball3, ball4);
     }
 

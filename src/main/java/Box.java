@@ -4,7 +4,7 @@ public class Box implements Shape {
     private int positionX;
     private final int positionY;
     private final int speed;
-    private static final int DIAMETER = 10;
+    private static final int DIAMETER = 25;
 
     public Box(int positionX, int positionY, int speed) {
         this.positionX = positionX;
