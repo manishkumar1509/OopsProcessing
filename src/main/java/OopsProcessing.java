@@ -1,11 +1,13 @@
 import processing.core.PApplet;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class OopsProcessing extends PApplet {
 
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480 / 5;
-    private static final int DIAMETER = 10;
-    private Ball ball1, ball2, ball3, ball4;
+    List<Shape> balls;
 
     public static void main(String[] args) {
         PApplet.main("OopsProcessing", args);
@@ -19,53 +21,16 @@ public class OopsProcessing extends PApplet {
 
     @Override
     public void setup() {
-        ball1 = new Ball(0, HEIGHT, DIAMETER, DIAMETER, 1);
-        ball2 = new Ball(0, 2 * HEIGHT, DIAMETER, DIAMETER, 2);
-        ball3 = new Ball(0, 3 * HEIGHT, DIAMETER, DIAMETER, 3);
-        ball4 = new Ball(0, 4 * HEIGHT, DIAMETER, DIAMETER, 4);
+        Ball ball1 = new Ball(0, HEIGHT, 1);
+        Box box1 = new Box(0, 2 * HEIGHT, 2);
+        Ball ball3 = new Ball(0, 3 * HEIGHT, 3);
+        Ball ball4 = new Ball(0, 4 * HEIGHT, 4);
+        balls = Arrays.asList(ball1, box1, ball3, ball4);
     }
 
     @Override
     public void draw() {
-        displayBalls();
-        moveBalls();
-    }
-
-    private void moveBalls() {
-        ball1.move();
-        ball2.move();
-        ball3.move();
-        ball4.move();
-    }
-
-    private void displayBalls() {
-        ball1.display();
-        ball2.display();
-        ball3.display();
-        ball4.display();
-    }
-
-    public class Ball {
-        int positionX;
-        int positionY;
-        int width;
-        int height;
-        int speed;
-
-        public Ball(int positionX, int positionY, int width, int height, int speed) {
-            this.positionX = positionX;
-            this.positionY = positionY;
-            this.width = width;
-            this.height = height;
-            this.speed = speed;
-        }
-
-        public void display() {
-            ellipse(positionX, positionY, width, height);
-        }
-
-        public void move() {
-            positionX += speed;
-        }
+        balls.forEach(ball -> ball.display(this));
+        balls.forEach(Shape::move);
     }
 }
